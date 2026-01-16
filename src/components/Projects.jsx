@@ -16,7 +16,7 @@ const Projects = () => {
       tags: ["React", "Node.js", "Express", "PostgreSQL", "JWT", "GenAI"],
       category: "fullstack",
       github: "https://github.com/medmedhaddioui/AI-DailyNews",
-      demo: "#",
+      demo: "https://github.com/medmedhaddioui",
       stats: { date: "Nov 2025-Present", type: "AI-powered" }
     },
     {
@@ -28,7 +28,7 @@ const Projects = () => {
       tags: ["React", "Node.js", "Express", "PostgreSQL", "JWT"],
       category: "fullstack",
       github: "#",
-      demo: "#",
+      demo: "https://github.com/medmedhaddioui",
       stats: { perf: "+40%" }
     },
     {
@@ -41,7 +41,7 @@ const Projects = () => {
       tags: ["Node.js", "Fastify", "React", "WebSocket", "SQLite"],
       category: "fullstack",
       github: "https://github.com/medmedhaddioui/ft_transcendence",
-      demo: "#",
+      demo: "https://github.com/medmedhaddioui",
       stats: { date: "Sep-Nov 2025", type: "Real-time" }
     },
     {
@@ -54,7 +54,7 @@ const Projects = () => {
       tags: ["Docker", "Docker Compose", "Containerization"],
       category: "backend",
       github: "https://github.com/medmedhaddioui/Inception--42",
-      demo: "#",
+      demo: "https://github.com/medmedhaddioui",
       stats: { date: "Jun-Jul 2025", type: "DevOps" }
     }
   ]
