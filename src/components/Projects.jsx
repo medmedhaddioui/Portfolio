@@ -8,21 +8,35 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: "DailyNews AI",
+      description: "AI-powered web application that allows users to track personalized news topics (e.g., cryptocurrency, politics) on a daily basis. Features user authentication with JWT, protected routes, and a clean, user-friendly interface for switching between topics.",
+      image: "/AiDailyNews.png",
+      imageType: "file",
+      gradient: "linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 50%, #2BFF88 100%)",
+      tags: ["React", "Node.js", "Express", "PostgreSQL", "JWT", "GenAI"],
+      category: "fullstack",
+      github: "#",
+      demo: "#",
+      stats: { date: "Nov 2025-Present", type: "AI-powered" }
+    },
+    {
+      id: 2,
       title: "OpenNotes",
       description: "Secure note-sharing platform with JWT authentication, role-based access controls, and public note discovery via keyword search. Optimized PostgreSQL indexing improved search performance by ~40%.",
       image: "📝",
-      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      gradient: "#000000",
       tags: ["React", "Node.js", "Express", "PostgreSQL", "JWT"],
       category: "fullstack",
       github: "#",
       demo: "#",
-      stats: { date: "Nov 2025", perf: "+40%" }
+      stats: { perf: "+40%" }
     },
     {
-      id: 2,
+      id: 3,
       title: "Real-Time Multiplayer Web Game",
       description: "Full-stack multiplayer application with real-time gameplay via WebSocket. Features automated tournament brackets, live scoring, player ranking, and synchronized game state across all clients.",
-      image: "🎮",
+      image: "/pingpong.png",
+      imageType: "file",
       gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
       tags: ["Node.js", "Fastify", "React", "WebSocket", "SQLite"],
       category: "fullstack",
@@ -31,10 +45,11 @@ const Projects = () => {
       stats: { date: "Sep-Nov 2025", type: "Real-time" }
     },
     {
-      id: 3,
+      id: 4,
       title: "Inception Project",
       description: "Explored Docker containerization, image creation, and orchestration. Built and managed Docker images, configured multi-container environments with Docker Compose, and optimized Dockerfile layers.",
-      image: "🐳",
+      image: "/docker.png",
+      imageType: "file",
       gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
       tags: ["Docker", "Docker Compose", "Containerization"],
       category: "backend",
@@ -89,7 +104,11 @@ const Projects = () => {
                 className="project-image"
                 style={{ background: project.gradient }}
               >
-                <div className="project-icon">{project.image}</div>
+                {project.imageType === 'file' ? (
+                  <img src={project.image} alt={project.title} className="project-screenshot" />
+                ) : (
+                  <div className="project-icon">{project.image}</div>
+                )}
                 <div className="project-overlay">
                   <div className="project-stats">
                     {Object.entries(project.stats).map(([key, value]) => (
