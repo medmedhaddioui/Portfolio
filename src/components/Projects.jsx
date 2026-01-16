@@ -15,7 +15,7 @@ const Projects = () => {
       gradient: "linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 50%, #2BFF88 100%)",
       tags: ["React", "Node.js", "Express", "PostgreSQL", "JWT", "GenAI"],
       category: "fullstack",
-      github: "#",
+      github: "https://github.com/medmedhaddioui/AI-DailyNews",
       demo: "#",
       stats: { date: "Nov 2025-Present", type: "AI-powered" }
     },
@@ -40,7 +40,7 @@ const Projects = () => {
       gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
       tags: ["Node.js", "Fastify", "React", "WebSocket", "SQLite"],
       category: "fullstack",
-      github: "#",
+      github: "https://github.com/medmedhaddioui/ft_transcendence",
       demo: "#",
       stats: { date: "Sep-Nov 2025", type: "Real-time" }
     },
@@ -53,7 +53,7 @@ const Projects = () => {
       gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
       tags: ["Docker", "Docker Compose", "Containerization"],
       category: "backend",
-      github: "#",
+      github: "https://github.com/medmedhaddioui/Inception--42",
       demo: "#",
       stats: { date: "Jun-Jul 2025", type: "DevOps" }
     }
