@@ -10,7 +10,7 @@ const Projects = () => {
       id: 1,
       title: "DailyNews AI",
       description: "AI-powered web application that allows users to track personalized news topics (e.g., cryptocurrency, politics) on a daily basis. Features user authentication with JWT, protected routes, and a clean, user-friendly interface for switching between topics.",
-      image: "/AiDailyNews.png",
+      image: "/AiDailyNews.svg",
       imageType: "file",
       gradient: "linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 50%, #2BFF88 100%)",
       tags: ["React", "Node.js", "Express", "PostgreSQL", "JWT", "GenAI"],
