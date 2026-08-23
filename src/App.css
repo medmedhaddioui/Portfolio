@@ -1,7 +1,149 @@
+/* ===== APP SHELL ===== */
+
 .App {
   min-height: 100vh;
   width: 100%;
   position: relative;
+  z-index: 1;
 }
 
-/* Remove all default vite template styles */
+/* ===== LOADER ===== */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #030712;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+
+.loader.fade-out {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+.loader-brand {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: loader-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loader-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.loader-bar {
+  width: 160px;
+  height: 3px;
+  background: rgba(99, 102, 241, 0.15);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.loader-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  border-radius: var(--radius-full);
+  animation: loader-fill 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes loader-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* ===== CUSTOM CURSOR ===== */
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  border-radius: 50%;
+  transition: width var(--duration) var(--ease),
+              height var(--duration) var(--ease),
+              background var(--duration) var(--ease),
+              border-color var(--duration) var(--ease);
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(99, 102, 241, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width var(--duration-slow) var(--ease-spring),
+              height var(--duration-slow) var(--ease-spring),
+              border-color var(--duration) var(--ease);
+}
+
+.cursor-dot.hovering {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+}
+
+.cursor-ring.hovering {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+/* ===== SECTION DIVIDER ===== */
+
+.wave-divider {
+  width: 100%;
+  line-height: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+.wave-divider.flip {
+  transform: scaleY(-1);
+}
+
+/* ===== SCROLL PROGRESS ===== */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  z-index: 10001;
+  transition: none;
+  border-radius: 0 var(--radius-full) var(--radius-full) 0;
+}
+
+@media (max-width: 768px) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+}

@@ -1,98 +1,99 @@
-import { useEffect, useRef, useState } from 'react'
+import useScrollReveal from '../hooks/useScrollReveal'
 import './Skills.css'
 
 const Skills = () => {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef(null)
+  const [sectionRef, isVisible] = useScrollReveal({ threshold: 0.1 })
 
-  const skillCategories = [
+  const bentoSkills = [
     {
-      title: "Languages",
-      icon: "💻",
+      category: "Languages & Core",
+      size: "large",
+      icon: "⚡",
+      gradient: "linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15))",
+      borderColor: "rgba(99, 102, 241, 0.3)",
       skills: [
-        { name: "C/C++", level: 85, color: "#00599C" },
-        { name: "TypeScript", level: 80, color: "#3178C6" },
-        { name: "JavaScript", level: 85, color: "#F7DF1E" },
-        { name: "HTML/CSS", level: 90, color: "#E34F26" }
+        { name: "C / C++", level: "85%", icon: "💻", tag: "System Programming" },
+        { name: "TypeScript", level: "80%", icon: "🔷", tag: "Type-Safe JS" },
+        { name: "JavaScript", level: "85%", icon: "🟨", tag: "ES6+" },
+        { name: "HTML5 / CSS3", level: "90%", icon: "🎨", tag: "Modern Web" }
       ]
     },
     {
-      title: "Frameworks & Libraries",
-      icon: "⚙️",
+      category: "Frameworks & Libraries",
+      size: "medium",
+      icon: "🚀",
+      gradient: "linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(59, 130, 246, 0.15))",
+      borderColor: "rgba(6, 182, 212, 0.3)",
       skills: [
-        { name: "React", level: 85, color: "#61DAFB" },
-        { name: "Node.js", level: 80, color: "#339933" },
-        { name: "Express", level: 75, color: "#000000" },
-        { name: "Fastify", level: 75, color: "#000000" },
-        { name: "TailwindCSS", level: 85, color: "#06B6D4" }
+        { name: "React.js", level: "85%", icon: "⚛️" },
+        { name: "Node.js", level: "80%", icon: "⬢" },
+        { name: "Express.js", level: "75%", icon: "🚂" },
+        { name: "Fastify", level: "75%", icon: "⚡" },
+        { name: "TailwindCSS", level: "85%", icon: "🌊" }
       ]
     },
     {
-      title: "Tools & Databases",
-      icon: "🛠️",
+      category: "DevOps & Cloud",
+      size: "small",
+      icon: "🐳",
+      gradient: "linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.15))",
+      borderColor: "rgba(16, 185, 129, 0.3)",
       skills: [
-        { name: "Git", level: 85, color: "#F05032" },
-        { name: "Docker", level: 75, color: "#2496ED" },
-        { name: "PostgreSQL", level: 75, color: "#4169E1" },
-        { name: "SQLite", level: 80, color: "#003B57" },
-        { name: "MariaDB", level: 70, color: "#003545" }
+        { name: "Docker", level: "75%", icon: "🐋" },
+        { name: "Docker Compose", level: "75%", icon: "🐙" },
+        { name: "Git / GitHub", level: "85%", icon: "🌿" }
+      ]
+    },
+    {
+      category: "Databases & Storage",
+      size: "small",
+      icon: "🗄️",
+      gradient: "linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.15))",
+      borderColor: "rgba(236, 72, 153, 0.3)",
+      skills: [
+        { name: "PostgreSQL", level: "75%", icon: "🐘" },
+        { name: "SQLite", level: "80%", icon: "🪶" },
+        { name: "MariaDB", level: "70%", icon: "🦭" }
       ]
     }
   ]
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.2 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [])
-
   return (
     <section id="skills" className="skills" ref={sectionRef}>
       <div className="container">
-        <h2 className="section-title">Skills & Expertise</h2>
-        <p className="section-description">
-          Technologies and tools I work with to bring ideas to life
+        <h2 className={`section-title gradient-text reveal ${isVisible ? 'visible' : ''}`}>
+          Skills & Expertise
+        </h2>
+        <p className={`section-subtitle reveal ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.1s' }}>
+          A bento-grid breakdown of technologies I bring to the table
         </p>
-        <div className="skills-grid">
-          {skillCategories.map((category, idx) => (
-            <div key={idx} className="skill-category" style={{ animationDelay: `${idx * 0.1}s` }}>
-              <div className="category-header">
-                <span className="category-icon">{category.icon}</span>
-                <h3>{category.title}</h3>
+
+        <div className="bento-grid">
+          {bentoSkills.map((card, idx) => (
+            <div
+              key={idx}
+              className={`bento-card bento-${card.size} reveal ${isVisible ? 'visible' : ''}`}
+              style={{
+                transitionDelay: `${0.15 + idx * 0.1}s`,
+                background: card.gradient,
+                borderColor: card.borderColor
+              }}
+            >
+              <div className="bento-header">
+                <span className="bento-icon">{card.icon}</span>
+                <h3>{card.category}</h3>
               </div>
-              <div className="skills-list">
-                {category.skills.map((skill, skillIdx) => (
-                  <div key={skillIdx} className="skill-item">
-                    <div className="skill-info">
-                      <span className="skill-name">{skill.name}</span>
-                      <span className="skill-percentage">{skill.level}%</span>
+
+              <div className="bento-skills-list">
+                {card.skills.map((skill, sIdx) => (
+                  <div key={sIdx} className="bento-skill-item" data-hover>
+                    <div className="bento-skill-info">
+                      <span className="bento-skill-icon">{skill.icon}</span>
+                      <span className="bento-skill-name">{skill.name}</span>
                     </div>
-                    <div className="skill-bar-container">
-                      <div 
-                        className={`skill-bar ${isVisible ? 'animate' : ''}`}
-                        style={{ 
-                          width: isVisible ? `${skill.level}%` : '0%',
-                          background: `linear-gradient(90deg, ${skill.color}, var(--primary-color))`,
-                          animationDelay: `${(idx * 0.1) + (skillIdx * 0.1)}s`
-                        }}
-                      >
-                        <div className="skill-glow" style={{ background: skill.color }}></div>
-                      </div>
+                    <div className="bento-skill-right">
+                      {skill.tag && <span className="bento-skill-tag">{skill.tag}</span>}
+                      <span className="bento-skill-badge">{skill.level}</span>
                     </div>
                   </div>
                 ))}
