@@ -21,14 +21,14 @@ const useScrollReveal = (options = {}) => {
         }
       },
       {
-        threshold: options.threshold || 0.1,
+        threshold: options.threshold ?? 0.1,
         rootMargin: options.rootMargin || '0px 0px -50px 0px'
       }
     )
 
     observer.observe(element)
     return () => observer.disconnect()
-  }, [])
+  }, [options.threshold, options.rootMargin])
 
   return [ref, isVisible]
 }
