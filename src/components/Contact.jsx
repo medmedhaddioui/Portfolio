@@ -9,7 +9,7 @@ export default function Contact() {
         I’m open to meaningful collaborations and full-stack opportunities—let’s talk
         about what we can build together.
       </p>
-      <a className="outline-button" href="/resume.pdf" download="Mohammed-Elhaddioui-Resume.pdf">
+      <a className="outline-button" href="/MohammedElhaddioui.pdf" download="Mohammed-Elhaddioui-Resume.pdf">
         Download Resume
       </a>
     </section>
