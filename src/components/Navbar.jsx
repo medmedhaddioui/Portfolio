@@ -17,7 +17,7 @@ export default function Navbar() {
     <button ref={button} className="menu-toggle" aria-expanded={open} aria-controls="navigation" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)}><span /><span /><span /></button>
     <div id="navigation" className={`navigation ${open ? 'is-open' : ''}`}>
       <ol>{links.map(([id, label], i) => <li key={id}><a href={`#${id}`} onClick={() => setOpen(false)}><span>0{i + 1}.</span> {label}</a></li>)}</ol>
-      <a className="outline-button resume-button" href="/resume.pdf" target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>Resume</a>
+      <a className="outline-button resume-button" href="/MohammedElhaddioui.pdf" download="Mohammed-Elhaddioui-Resume.pdf" onClick={() => setOpen(false)}>Resume</a>
     </div>
   </nav></header>
 }
